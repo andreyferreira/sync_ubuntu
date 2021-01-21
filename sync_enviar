@@ -1,0 +1,10 @@
+#!/bin/bash
+ROOTPATH=`pwd`;
+CHKRUNPID=`ps axu | grep cliente_enviar | grep -v grep`;
+if [ "$CHKRUNPID" ];
+then
+   echo "SINCRONISMO EM EXECUÇÃO";
+else
+   /usr/bin/sudo -u www-data /usr/bin/php /var/www/illi/index.php sincronismo cliente_enviar;
+fi
+
